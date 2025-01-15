@@ -23,6 +23,7 @@ Language: [English](./README.md) | [中文](./README_ZH.md)
         * [自定义配置模板](#自定义配置模板)
 * [clashtui 的文件结构](#clashtui-的文件结构)
 * [See more](#see-more)
+* [尝试新东西](#尝试新东西)
 * [项目免责声明](#项目免责声明)
 
 <!-- vim-markdown-toc -->
@@ -121,11 +122,17 @@ clashtui                # 先运行会在 ~/.config/clashtui 生成一些默认�
 
 # nvim ~/.config/clashtui/config.yaml
 # 下面参数对应命令 <clash_core_path> -d <clash_cfg_dir> -f <clash_cfg_path>
-clash_core_path: "/usr/bin/mihomo"
-clash_cfg_dir: "/srv/mihomo"
-clash_cfg_path: "/srv/mihomo/config.yaml"
-clash_srv_name: "mihomo"       # systemctl {restart | stop} <clash_srv_name>
-clash_srv_is_user: false        # true: systemctl --user ...
+basic:
+  clash_config_dir: '/srv/mihomo'
+  clash_bin_path: '/usr/bin/mihomo'
+  clash_config_path: '/srv/mihomo/config.yaml'
+  timeout: null                     # 模拟 clash_ua 下载的超时时间。`null` 表示没有超时时间。单位是`秒`。
+service:
+  clash_srv_name: 'mihomo'          # systemctl {restart | stop} <clash_srv_name>
+  is_user: false                    # true: systemctl --user ...
+extra:
+  edit_cmd: ''
+  open_dir_cmd: ''
 ```
 
 clashtui 后续的版本没有上传到 `crates.io`, 因为现在 clashtui 分离为多个模块, 如果上传到 `crates.io`, 需要上传依赖的每个模块, 而有些模块没有必要上传到 `crates.io`。See [ref](https://users.rust-lang.org/t/is-it-possible-to-publish-crates-with-path-specified/91497/2)。所以不要使用 `cargo install clashtui` 来安装了。
@@ -260,6 +267,11 @@ proxy-groups:
 ## See more
 
 [Doc](./Doc)
+
+## 尝试新东西
+
+-   [clashtui v3](https://github.com/JohanChane/clashtui/tree/master)
+-   [clashcli](https://github.com/JohanChane/clashtui/tree/aio)
 
 ## 项目免责声明
 
